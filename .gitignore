@@ -22,6 +22,7 @@ backend/secure_uploads/
 dist/
 build/
 *.log
+*.zip
 scratch/
 
 # Operating System Files
