@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government &amp; Regional Dashboard | SkillPulse TVET Policy Engine</title>
+  <meta name="description" content="District-level skilling analytics, ITI census capacity, PMKVY certifications, and supply-demand mismatches across Maharashtra and India.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div>
+          <span>Skill<span style="color:var(--primary-600);">Pulse</span></span>
+          <span class="brand-text-sub">Government &amp; Regional</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="skill-intelligence.html" class="nav-link">Skill Intelligence</a>
+        <a href="skill-gap-analyzer.html" class="nav-link">Gap Analyzer</a>
+        <a href="career-roadmap.html" class="nav-link">Career Roadmap</a>
+        <a href="training-curriculum.html" class="nav-link">Curriculum Simulator</a>
+        <a href="government.html" class="nav-link active">Government Portal</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="practice.html" class="nav-link">Practice</a>
+        <a href="experts.html" class="nav-link">Experts</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-sm" onclick="SkillPulse.toast('District Skill Development Report Exported!','success')">Export District Brief</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="skill-intelligence.html" class="mobile-nav-link">Skill Intelligence</a>
+      <a href="skill-gap-analyzer.html" class="mobile-nav-link">Skill Gap Analyzer</a>
+      <a href="career-roadmap.html" class="mobile-nav-link">Career Roadmap</a>
+      <a href="training-curriculum.html" class="mobile-nav-link">Curriculum Simulator</a>
+      <a href="government.html" class="mobile-nav-link active">Government Portal</a>
+      <a href="courses.html" class="mobile-nav-link">Courses</a>
+      <a href="practice.html" class="mobile-nav-link">Practice</a>
+      <a href="experts.html" class="mobile-nav-link">Experts</a>
+      <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="flex:1;padding:2.5rem 0 4rem 0;">
+    <div class="container" style="display:flex;flex-direction:column;gap:2.5rem;">
+
+      <!-- Header -->
+      <div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <span class="badge badge-primary">District Skill Committees (DSC)</span>
+          <span class="badge badge-navy">State Focus: Maharashtra</span>
+        </div>
+        <h1 style="font-size:2rem;font-weight:800;color:var(--navy-900);">Regional Skilling &amp; TVET Policy Engine</h1>
+        <p style="color:var(--navy-600);font-size:0.95rem;max-width:760px;margin-top:0.25rem;">
+          Empowering District Collectors and State Skill Development Missions (SSDM) with localized labor demand, ITI capacity saturation, and targeted intervention analytics.
+        </p>
+      </div>
+
+      <!-- State Wide Macro Metrics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div>
+            <div class="stat-card-top">
+              <span class="stat-card-label">Maharashtra ITIs</span>
+              <div class="stat-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            </div>
+            <div class="stat-card-val">978</div>
+            <span class="badge badge-primary">Government &amp; Private</span>
+          </div>
+          <div class="stat-card-sub">Enrolled annual training capacity: 1,45,000+ vocational seats.</div>
+        </div>
+
+        <div class="stat-card">
+          <div>
+            <div class="stat-card-top">
+              <span class="stat-card-label">Active State Vacancies</span>
+              <div class="stat-card-icon" style="background:var(--cyan-50);color:var(--cyan-600);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            </div>
+            <div class="stat-card-val">2.84L+</div>
+            <span class="badge badge-cyan">MahaSwayam Portal</span>
+          </div>
+          <div class="stat-card-sub">Industrial cluster requisitions in Pune, MMR, and Aurangabad belts.</div>
+        </div>
+
+        <div class="stat-card">
+          <div>
+            <div class="stat-card-top">
+              <span class="stat-card-label">Curriculum Alignment Index</span>
+              <div class="stat-card-icon" style="background:var(--warning-bg);color:var(--warning);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg></div>
+            </div>
+            <div class="stat-card-val">74.2%</div>
+            <span class="badge badge-warning">Regional Average</span>
+          </div>
+          <div class="stat-card-sub">Gap between traditional trades and Industry 4.0 automation.</div>
+        </div>
+
+        <div class="stat-card">
+          <div>
+            <div class="stat-card-top">
+              <span class="stat-card-label">Placement Efficiency</span>
+              <div class="stat-card-icon" style="background:var(--success-bg);color:var(--success);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            </div>
+            <div class="stat-card-val">68.8%</div>
+            <span class="badge badge-success">+5.4% YoY</span>
+          </div>
+          <div class="stat-card-sub">Certified candidates securing verified wage employment within 6 months.</div>
+        </div>
+      </div>
+
+      <!-- District Breakdown Table -->
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+          <div>
+            <h2 style="font-size:1.15rem;font-weight:700;color:var(--navy-900);">District-Level Demand vs Training Supply</h2>
+            <p style="font-size:0.8125rem;color:var(--navy-500);">Comparison of industrial job demand versus active ITI/PMKVY training capacity</p>
+          </div>
+          <span class="badge badge-primary">Key Industrial Hubs</span>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>District</th>
+                <th>Primary Industry Hub</th>
+                <th>Monthly Vacancies</th>
+                <th>Training Capacity</th>
+                <th>Supply-Demand Alignment</th>
+                <th>Priority Growth Sector</th>
+              </tr>
+            </thead>
+            <tbody id="districtTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>© 2026 SkillPulse Government &amp; Regional Engine | Smart India Hackathon 2026</span>
+        <span>Problem Statement 26134 | Team HACK.FORCE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pulseai.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const data = window.SKILLPULSE_DATA || {};
+      const tbody = document.getElementById('districtTableBody');
+      if (!tbody || !data.MAHARASHTRA_DISTRICTS) return;
+
+      tbody.innerHTML = data.MAHARASHTRA_DISTRICTS.map(d => `
+        <tr>
+          <td style="font-weight:700;color:var(--navy-900);">${d.district || d.name}</td>
+          <td>${d.primaryIndustry || 'IT / Auto / Manufacturing'}</td>
+          <td style="font-weight:700;color:var(--primary-600);">${(d.vacancies || d.monthlyVacancies || 4200).toLocaleString()}+</td>
+          <td>${(d.trainingCapacity || d.capacity || 3800).toLocaleString()} seats</td>
+          <td style="width:180px;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <div class="progress-track" style="flex:1;">
+                <div class="progress-fill" style="width:${d.alignment || 78}%;"></div>
+              </div>
+              <span style="font-size:0.75rem;font-weight:700;">${d.alignment || 78}%</span>
+            </div>
+          </td>
+          <td><span class="badge badge-navy">${d.prioritySector || 'Industry 4.0 / EV'}</span></td>
+        </tr>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

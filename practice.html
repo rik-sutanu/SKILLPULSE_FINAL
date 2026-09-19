@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Arena | SkillPulse Technical Interview Prep</title>
+  <meta name="description" content="Simulate real corporate technical screening exams with curated questions from TCS, Infosys, Google, and top employers.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div>
+          <span>Skill<span style="color:var(--primary-600);">Pulse</span></span>
+          <span class="brand-text-sub">Practice Arena</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="skill-intelligence.html" class="nav-link">Skill Intelligence</a>
+        <a href="skill-gap-analyzer.html" class="nav-link">Gap Analyzer</a>
+        <a href="career-roadmap.html" class="nav-link">Career Roadmap</a>
+        <a href="training-curriculum.html" class="nav-link">Curriculum Simulator</a>
+        <a href="government.html" class="nav-link">Government Portal</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="practice.html" class="nav-link active">Practice</a>
+        <a href="experts.html" class="nav-link">Experts</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="badge badge-primary" id="practiceScoreDisplay" style="font-size:0.8125rem;padding:0.4rem 0.8rem;">0 pts (0 answered)</div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="skill-intelligence.html" class="mobile-nav-link">Skill Intelligence</a>
+      <a href="skill-gap-analyzer.html" class="mobile-nav-link">Skill Gap Analyzer</a>
+      <a href="career-roadmap.html" class="mobile-nav-link">Career Roadmap</a>
+      <a href="training-curriculum.html" class="mobile-nav-link">Curriculum Simulator</a>
+      <a href="government.html" class="mobile-nav-link">Government Portal</a>
+      <a href="courses.html" class="mobile-nav-link">Courses</a>
+      <a href="practice.html" class="mobile-nav-link active">Practice</a>
+      <a href="experts.html" class="mobile-nav-link">Experts</a>
+      <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="flex:1;padding:2.5rem 0 4rem 0;">
+    <div class="container" style="display:flex;flex-direction:column;gap:2rem;">
+
+      <!-- Title & Filters -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="badge badge-success" style="margin-bottom:0.5rem;">Verified Corporate Question Bank</span>
+          <h1 style="font-size:2rem;font-weight:800;color:var(--navy-900);">Interview &amp; Screening Practice Arena</h1>
+          <p style="color:var(--navy-600);font-size:0.95rem;margin-top:0.25rem;">
+            Test your conceptual knowledge against real screening questions used by Indian IT enterprises and tech startups.
+          </p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <label style="font-size:0.875rem;font-weight:700;color:var(--navy-800);">Filter by Role:</label>
+          <select id="practiceRoleSelect" style="padding:0.625rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-md);font-weight:600;color:var(--navy-900);background:#fff;outline:none;cursor:pointer;">
+            <option value="all">All Domains</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="AI/ML Engineer">AI/ML Engineer</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Questions List -->
+      <div id="practiceQuestionsContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>© 2026 SkillPulse Practice Arena | Smart India Hackathon 2026</span>
+        <span>Problem Statement 26134 | Team HACK.FORCE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pulseai.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SkillPulse.initPracticeArena();
+    });
+  </script>
+</body>
+</html>

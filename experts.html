@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry Mentors | SkillPulse 1-on-1 Advisory</title>
+  <meta name="description" content="Connect with verified engineers, data leads, and recruiters for 1-on-1 resume reviews, mock interviews, and career guidance.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div>
+          <span>Skill<span style="color:var(--primary-600);">Pulse</span></span>
+          <span class="brand-text-sub">Industry Mentors</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="skill-intelligence.html" class="nav-link">Skill Intelligence</a>
+        <a href="skill-gap-analyzer.html" class="nav-link">Gap Analyzer</a>
+        <a href="career-roadmap.html" class="nav-link">Career Roadmap</a>
+        <a href="training-curriculum.html" class="nav-link">Curriculum Simulator</a>
+        <a href="government.html" class="nav-link">Government Portal</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="practice.html" class="nav-link">Practice</a>
+        <a href="experts.html" class="nav-link active">Experts</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-secondary btn-sm" onclick="SkillPulse.toast('Mentorship application submitted!','info')">Become a Mentor</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="skill-intelligence.html" class="mobile-nav-link">Skill Intelligence</a>
+      <a href="skill-gap-analyzer.html" class="mobile-nav-link">Skill Gap Analyzer</a>
+      <a href="career-roadmap.html" class="mobile-nav-link">Career Roadmap</a>
+      <a href="training-curriculum.html" class="mobile-nav-link">Curriculum Simulator</a>
+      <a href="government.html" class="mobile-nav-link">Government Portal</a>
+      <a href="courses.html" class="mobile-nav-link">Courses</a>
+      <a href="practice.html" class="mobile-nav-link">Practice</a>
+      <a href="experts.html" class="mobile-nav-link active">Experts</a>
+      <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="flex:1;padding:2.5rem 0 4rem 0;">
+    <div class="container" style="display:flex;flex-direction:column;gap:2.5rem;">
+
+      <div>
+        <span class="badge badge-primary" style="margin-bottom:0.5rem;">1-on-1 Career Advisory</span>
+        <h1 style="font-size:2rem;font-weight:800;color:var(--navy-900);">Verified Industry Mentors</h1>
+        <p style="color:var(--navy-600);font-size:0.95rem;margin-top:0.25rem;">
+          Get direct personalized feedback on your portfolio, mock technical rounds, and insights on overcoming specific skill gaps.
+        </p>
+      </div>
+
+      <!-- Mentors Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;" id="mentorsGrid">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Booking Modal -->
+  <div class="modal-backdrop" id="mentorModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalMentorName" style="font-size:1.2rem;font-weight:800;color:var(--navy-900);">Schedule Mentorship</h3>
+        <button style="background:none;border:none;cursor:pointer;" data-close-modal>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div>
+            <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Session Objective:</label>
+            <select id="sessionType" style="width:100%;padding:0.625rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;">
+              <option>Skill Gap Review &amp; Learning Plan (30 Min)</option>
+              <option>Mock Technical Interview &amp; Live Coding (45 Min)</option>
+              <option>Resume &amp; Project Portfolio Audit (30 Min)</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Preferred Date &amp; Slot:</label>
+            <input type="datetime-local" style="width:100%;padding:0.625rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Your Question or Context:</label>
+            <textarea placeholder="e.g. Preparing for Data Analyst roles, need advice on bridging SQL gaps..." rows="3" style="width:100%;padding:0.625rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" data-close-modal>Cancel</button>
+        <button class="btn btn-primary btn-sm" id="btnConfirmBooking">Confirm Free SIH Slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>© 2026 SkillPulse Mentors | Smart India Hackathon 2026</span>
+        <span>Problem Statement 26134 | Team HACK.FORCE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pulseai.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mentors = [
+        {
+          id: 'm1',
+          name: 'Priyanka Sen',
+          role: 'Staff ML Engineer @ Amazon AWS',
+          domain: 'AI & Data Science',
+          experience: '9+ Years',
+          rating: '4.95 ★ (140+ sessions)',
+          bio: 'Specializes in LLM deployment, NLP pipelines, and transitioning academic students into enterprise AI roles.',
+          skills: ['Python', 'LLMOps', 'PyTorch', 'System Design']
+        },
+        {
+          id: 'm2',
+          name: 'Rohit Kulkarni',
+          role: 'Principal Software Architect @ Microsoft',
+          domain: 'Backend & Cloud',
+          experience: '12+ Years',
+          rating: '4.98 ★ (220+ sessions)',
+          bio: 'Ex-startup CTO. Deep experience in high-throughput distributed architectures and mentoring junior developers.',
+          skills: ['Node.js', 'PostgreSQL', 'Docker', 'Kubernetes']
+        },
+        {
+          id: 'm3',
+          name: 'Sneha Deshmukh',
+          role: 'Lead Frontend Engineer @ Swiggy',
+          domain: 'Web & UI Systems',
+          experience: '7+ Years',
+          rating: '4.90 ★ (95+ sessions)',
+          bio: 'Passionate about component design systems, React performance, and modern CSS layout architectures.',
+          skills: ['React.js', 'Next.js', 'Tailwind CSS', 'JavaScript']
+        }
+      ];
+
+      const grid = document.getElementById('mentorsGrid');
+      grid.innerHTML = mentors.map(m => `
+        <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;padding:1.75rem;">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;">
+              <div>
+                <h3 style="font-size:1.2rem;font-weight:800;color:var(--navy-900);">${m.name}</h3>
+                <p style="font-size:0.875rem;font-weight:600;color:var(--primary-600);">${m.role}</p>
+              </div>
+              <span class="badge badge-success">Verified Mentor</span>
+            </div>
+
+            <p style="font-size:0.875rem;color:var(--navy-600);margin:0.75rem 0 1rem 0;line-height:1.5;">${m.bio}</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem;">
+              ${m.skills.map(s => `<span class="badge badge-navy">${s}</span>`).join('')}
+            </div>
+          </div>
+
+          <div style="padding-top:1rem;border-top:1px solid var(--border-light);display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:0.8125rem;color:var(--navy-500);">
+              <div style="font-weight:700;color:var(--warning);">${m.rating}</div>
+              <div>${m.experience} Experience</div>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openMentorModal('${m.name}')">Book Free Slot</button>
+          </div>
+        </div>
+      `).join('');
+
+      window.openMentorModal = function(name) {
+        document.getElementById('modalMentorName').textContent = `Book Session with ${name}`;
+        SkillPulse.openModal('mentorModal');
+      };
+
+      document.getElementById('btnConfirmBooking').addEventListener('click', () => {
+        SkillPulse.closeModal('mentorModal');
+        SkillPulse.toast('Mentorship session confirmed! Google Meet link sent to your email.', 'success');
+      });
+    });
+  </script>
+</body>
+</html>

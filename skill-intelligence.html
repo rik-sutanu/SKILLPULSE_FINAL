@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Intelligence | Real-Time Labor Market Demand</title>
+  <meta name="description" content="Explore live industry demand trends, emerging skill trajectories, and vacancy analytics across major sectors.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div>
+          <span>Skill<span style="color:var(--primary-600);">Pulse</span></span>
+          <span class="brand-text-sub">Market Intelligence</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="skill-intelligence.html" class="nav-link active">Skill Intelligence</a>
+        <a href="skill-gap-analyzer.html" class="nav-link">Gap Analyzer</a>
+        <a href="career-roadmap.html" class="nav-link">Career Roadmap</a>
+        <a href="training-curriculum.html" class="nav-link">Curriculum Simulator</a>
+        <a href="government.html" class="nav-link">Government Portal</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="practice.html" class="nav-link">Practice</a>
+        <a href="experts.html" class="nav-link">Experts</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="skill-gap-analyzer.html" class="btn btn-primary btn-sm">Audit Your Skills</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="skill-intelligence.html" class="mobile-nav-link active">Skill Intelligence</a>
+      <a href="skill-gap-analyzer.html" class="mobile-nav-link">Skill Gap Analyzer</a>
+      <a href="career-roadmap.html" class="mobile-nav-link">Career Roadmap</a>
+      <a href="training-curriculum.html" class="mobile-nav-link">Curriculum Simulator</a>
+      <a href="government.html" class="mobile-nav-link">Government Portal</a>
+      <a href="courses.html" class="mobile-nav-link">Courses</a>
+      <a href="practice.html" class="mobile-nav-link">Practice</a>
+      <a href="experts.html" class="mobile-nav-link">Experts</a>
+      <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="flex:1;padding:2.5rem 0 4rem 0;">
+    <div class="container" style="display:flex;flex-direction:column;gap:2.5rem;">
+
+      <!-- Title Area -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="badge badge-primary" style="margin-bottom:0.5rem;">Live Market Radar</span>
+          <h1 style="font-size:2rem;font-weight:800;color:var(--navy-900);">Industry-to-Skill Intelligence Engine</h1>
+          <p style="color:var(--navy-600);font-size:0.95rem;margin-top:0.25rem;">
+            Real-time skill demand trajectories, sector vacancy indexes, and emerging technology adoption velocity.
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <input type="text" id="skillSearchInput" placeholder="Filter skills or domain..." style="padding:0.625rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;width:240px;outline:none;" />
+        </div>
+      </div>
+
+      <!-- Industry Growth Stats -->
+      <div>
+        <h2 style="font-size:1.125rem;font-weight:700;color:var(--navy-900);margin-bottom:1rem;">Sector Hiring Velocity &amp; Vacancy Pools</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1rem;" id="industryContainer">
+          <!-- Loaded via JS -->
+        </div>
+      </div>
+
+      <!-- Emerging Skills Radar -->
+      <div class="card" style="padding:1.75rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem;">
+          <div>
+            <h2 style="font-size:1.25rem;font-weight:800;color:var(--navy-900);">Emerging Skills Accelerators (2026)</h2>
+            <p style="font-size:0.8125rem;color:var(--navy-500);">Skills experiencing over +25% quarter-over-quarter requisition growth</p>
+          </div>
+          <span class="badge badge-success">Live Trend Signals</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;" id="emergingSkillsContainer">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Master Skills Demand Table -->
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);background:#fff;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <h2 style="font-size:1.125rem;font-weight:700;color:var(--navy-900);">High-Demand Competencies Table</h2>
+            <p style="font-size:0.8125rem;color:var(--navy-500);">Ranked by enterprise hiring volume and annualized wage premiums</p>
+          </div>
+          <span class="badge badge-navy" id="tableCountBadge">9 Skills Tracked</span>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="skillsTable">
+            <thead>
+              <tr>
+                <th>Skill / Competency</th>
+                <th>Category</th>
+                <th>Primary Industry</th>
+                <th>Demand Index (0-100)</th>
+                <th>YoY Growth</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="skillsTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>© 2026 SkillPulse Market Intelligence | Smart India Hackathon 2026</span>
+        <span>Problem Statement 26134 | Team HACK.FORCE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pulseai.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const data = window.SKILLPULSE_DATA || {};
+
+      // 1. Render Industries
+      const indCont = document.getElementById('industryContainer');
+      if (indCont && data.INDUSTRIES) {
+        indCont.innerHTML = data.INDUSTRIES.map(ind => `
+          <div class="card" style="padding:1.25rem;">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--navy-500);text-transform:uppercase;">${ind.name}</div>
+            <div style="font-size:1.75rem;font-weight:800;color:var(--navy-900);margin:0.25rem 0;">${ind.vacancies.toLocaleString()}+</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:0.75rem;">
+              <span style="color:var(--navy-500);">Live Openings</span>
+              <span style="color:var(--success);font-weight:700;">${ind.growth} YoY</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Render Emerging Skills
+      const emCont = document.getElementById('emergingSkillsContainer');
+      if (emCont && data.EMERGING_SKILLS) {
+        emCont.innerHTML = data.EMERGING_SKILLS.map(sk => `
+          <div style="padding:1rem;background:var(--navy-50);border:1px solid var(--border);border-radius:var(--radius-md);">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <span style="font-weight:700;color:var(--navy-900);font-size:0.95rem;">${sk.name}</span>
+              <span class="badge ${sk.urgency === 'Critical' ? 'badge-danger' : 'badge-warning'}">${sk.urgency}</span>
+            </div>
+            <div style="font-size:0.75rem;color:var(--navy-500);margin-bottom:0.5rem;">${sk.category}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:0.75rem;font-weight:600;color:var(--navy-600);">Impact: ${sk.impact}</span>
+              <span style="font-size:0.875rem;font-weight:800;color:var(--success);">${sk.growth}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 3. Render Master Skills Table with live filter
+      const tableBody = document.getElementById('skillsTableBody');
+      const searchInput = document.getElementById('skillSearchInput');
+
+      function renderTable(filterText = '') {
+        if (!tableBody || !data.SKILL_DEMAND_DATA) return;
+        const q = filterText.toLowerCase();
+        const filtered = data.SKILL_DEMAND_DATA.filter(s => 
+          s.skill.toLowerCase().includes(q) || 
+          s.category.toLowerCase().includes(q) || 
+          s.industry.toLowerCase().includes(q)
+        );
+
+        tableBody.innerHTML = filtered.map(s => `
+          <tr>
+            <td style="font-weight:700;color:var(--navy-900);">${s.skill}</td>
+            <td><span class="badge badge-navy">${s.category}</span></td>
+            <td>${s.industry}</td>
+            <td style="width:200px;">
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div class="progress-track" style="flex:1;">
+                  <div class="progress-fill" style="width:${s.demand}%;"></div>
+                </div>
+                <span style="font-weight:700;font-size:0.8125rem;color:var(--primary-600);">${s.demand}</span>
+              </div>
+            </td>
+            <td><span style="color:var(--success);font-weight:700;">${s.growth}</span></td>
+            <td>
+              <a href="skill-gap-analyzer.html" class="btn btn-outline-primary btn-sm">Audit Gap</a>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => renderTable(e.target.value));
+      }
+      renderTable();
+    });
+  </script>
+</body>
+</html>

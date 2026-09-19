@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Portal | SkillPulse Enterprise Matching</title>
+  <meta name="description" content="Define talent skill weightings, post verified requisitions, and access pre-screened candidates with objective readiness scores.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div>
+          <span>Skill<span style="color:var(--primary-600);">Pulse</span></span>
+          <span class="brand-text-sub">Employer Portal</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="skill-intelligence.html" class="nav-link">Skill Intelligence</a>
+        <a href="skill-gap-analyzer.html" class="nav-link">Gap Analyzer</a>
+        <a href="career-roadmap.html" class="nav-link">Career Roadmap</a>
+        <a href="training-curriculum.html" class="nav-link">Curriculum Simulator</a>
+        <a href="government.html" class="nav-link">Government Portal</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="practice.html" class="nav-link">Practice</a>
+        <a href="experts.html" class="nav-link">Experts</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary btn-sm" onclick="SkillPulse.toast('Requisition published to NCS & SkillPulse pools!','success')">Publish Requisition</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-content">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="skill-intelligence.html" class="mobile-nav-link">Skill Intelligence</a>
+      <a href="skill-gap-analyzer.html" class="mobile-nav-link">Skill Gap Analyzer</a>
+      <a href="career-roadmap.html" class="mobile-nav-link">Career Roadmap</a>
+      <a href="training-curriculum.html" class="mobile-nav-link">Curriculum Simulator</a>
+      <a href="government.html" class="mobile-nav-link">Government Portal</a>
+      <a href="courses.html" class="mobile-nav-link">Courses</a>
+      <a href="practice.html" class="mobile-nav-link">Practice</a>
+      <a href="experts.html" class="mobile-nav-link">Experts</a>
+      <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+      <a href="employer.html" class="mobile-nav-link active">Employer Portal</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="flex:1;padding:2.5rem 0 4rem 0;">
+    <div class="container" style="display:flex;flex-direction:column;gap:2.5rem;">
+
+      <div>
+        <span class="badge badge-primary" style="margin-bottom:0.5rem;">Enterprise Talent Mobilization</span>
+        <h1 style="font-size:2rem;font-weight:800;color:var(--navy-900);">Industry Requisition &amp; Match Builder</h1>
+        <p style="color:var(--navy-600);font-size:0.95rem;max-width:760px;margin-top:0.25rem;">
+          Define exact technical requirements and let SkillPulse match verified students scoring above your custom readiness threshold.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="employer-grid">
+        <!-- Requisition Form -->
+        <div class="card" style="padding:2rem;">
+          <h2 style="font-size:1.25rem;font-weight:800;color:var(--navy-900);margin-bottom:1.25rem;">Build Candidate Skill Spec</h2>
+
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div>
+              <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Job Title / Designation:</label>
+              <input type="text" value="Junior Data Analyst (Fresher / 0-1 Yr)" style="width:100%;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.95rem;" />
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div>
+                <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Sector:</label>
+                <select style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;">
+                  <option>Information Technology &amp; Software</option>
+                  <option>BFSI &amp; Fintech</option>
+                  <option>Healthcare &amp; Biotech</option>
+                  <option>Automotive &amp; EV</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.35rem;">Target Location:</label>
+                <input type="text" value="Pune / Mumbai / Hybrid" style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:0.875rem;" />
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.5rem;">Required Competencies (Weighted Match):</label>
+              <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                <span class="badge badge-primary" style="padding:0.5rem 0.75rem;font-size:0.8125rem;">SQL (25%) ✕</span>
+                <span class="badge badge-primary" style="padding:0.5rem 0.75rem;font-size:0.8125rem;">Python (25%) ✕</span>
+                <span class="badge badge-primary" style="padding:0.5rem 0.75rem;font-size:0.8125rem;">Power BI (20%) ✕</span>
+                <span class="badge badge-cyan" style="padding:0.5rem 0.75rem;font-size:0.8125rem;">Excel Advanced (15%) ✕</span>
+                <span class="badge badge-navy" style="padding:0.5rem 0.75rem;font-size:0.8125rem;">+ Add Required Skill</span>
+              </div>
+            </div>
+
+            <div style="padding:1.25rem;background:var(--navy-50);border-radius:var(--radius-md);border:1px solid var(--border);">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-weight:700;color:var(--navy-900);">Matched Pre-Screened Candidates:</div>
+                  <p style="font-size:0.8125rem;color:var(--navy-500);">Verified college &amp; TVET students scoring &gt;80% readiness</p>
+                </div>
+                <div style="font-size:1.85rem;font-weight:800;color:var(--success);">1,420</div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="SkillPulse.toast('Requisition dispatched! Candidates notified.','success')">Mobilize Talent Pool</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <span>© 2026 SkillPulse Employer Requisitions | Smart India Hackathon 2026</span>
+        <span>Problem Statement 26134 | Team HACK.FORCE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pulseai.js"></script>
+</body>
+</html>
