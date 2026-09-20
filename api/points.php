@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../backend/security.php';
+require_once __DIR__ . '/../config/supabase.php';
 apply_government_security_headers();
 
 header('Content-Type: application/json; charset=utf-8');
@@ -7,7 +8,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
@@ -16,7 +17,7 @@ $pointsFile = __DIR__ . '/../backend/user_points.json';
 
 // Default initial state for demonstration candidate
 $defaultState = [
-    'userId' => 'usr_aditya_patil',
+    'userId' => 'usr_student_demo',
     'candidateName' => 'Aditya Patil',
     'targetRole' => 'Data Analyst / TVET Candidate',
     'totalXp' => 1340,
@@ -57,8 +58,67 @@ if (file_exists($pointsFile)) {
     }
 }
 
+// Check for authenticated user session via JWT cookie or Authorization header
+$authHeader = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+$token = '';
+if (preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
+    $token = $matches[1];
+} elseif (!empty($_COOKIE['skillpulse_access_token'])) {
+    $token = $_COOKIE['skillpulse_access_token'];
+}
+
+$activeUserId = 'usr_student_demo';
+$authUser = !empty($token) ? verify_jwt_token($token) : null;
+if ($authUser && !empty($authUser['name'])) {
+    $state['candidateName'] = $authUser['name'];
+    if (!empty($authUser['sub'])) {
+        $state['userId'] = $authUser['sub'];
+        $activeUserId = $authUser['sub'];
+    }
+    if (!empty($authUser['role'])) {
+        $state['targetRole'] = ($authUser['role'] === 'student') ? 'Data Analyst / TVET Candidate' : (ucfirst($authUser['role']) . ' Professional');
+    }
+}
+
+// Sync with Supabase Cloud if available
+if (supabase_is_configured()) {
+    $sbProf = supabase_rest_request('user_profiles', 'GET', null, [
+        'select' => '*',
+        'user_id' => 'eq.' . $activeUserId,
+        'limit' => 1
+    ], true);
+
+    // Fallback to baseline profile if new user profile has not been customized yet
+    if ((!$sbProf['success'] || empty($sbProf['data'][0])) && $activeUserId !== 'usr_student_demo') {
+        $sbProf = supabase_rest_request('user_profiles', 'GET', null, [
+            'select' => '*',
+            'user_id' => 'eq.usr_student_demo',
+            'limit' => 1
+        ], true);
+    }
+
+    if ($sbProf['success'] && !empty($sbProf['data'][0])) {
+        $row = $sbProf['data'][0];
+        if (isset($row['total_xp'])) {
+            $state['totalXp'] = (int)$row['total_xp'];
+        }
+        if (isset($row['readiness_score'])) {
+            $state['readinessScore'] = (float)$row['readiness_score'];
+        }
+        if (isset($row['current_level'])) {
+            $state['currentLevel'] = (int)$row['current_level'];
+        }
+        if (!empty($row['tier'])) {
+            $state['tier'] = $row['tier'];
+        }
+        if (!empty($row['level_title'])) {
+            $state['levelTitle'] = $row['level_title'];
+        }
+    }
+}
+
 // Handle GET: Return point metrics
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET') {
     echo json_encode([
         'success' => true,
         'data' => $state

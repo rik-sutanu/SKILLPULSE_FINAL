@@ -201,7 +201,7 @@
               className: 'btn btn-primary btn-sm',
               onClick: () => window.SkillPulse ? window.SkillPulse.toast('Readiness score saved to profile!', 'success') : alert('Saved!')
             }, 'Save Benchmark'),
-            h('a', { href: 'courses.html', className: 'btn btn-secondary btn-sm' }, 'Find Bridging Courses')
+            h('a', { href: 'courses.php', className: 'btn btn-secondary btn-sm' }, 'Find Bridging Courses')
           )
         ),
 
@@ -585,8 +585,8 @@
     const name = props.name || 'Aditya';
     const targetRole = props.targetRole || 'Data Analyst';
     const readiness = Math.min(100, Math.max(0, Number(props.readiness !== undefined ? props.readiness : 78) || 0));
-    const practiceUrl = props.practiceUrl || 'practice.html';
-    const retestUrl = props.retestUrl || 'skill-gap-analyzer.html';
+    const practiceUrl = props.practiceUrl || 'practice.php';
+    const retestUrl = props.retestUrl || 'skill-gap-analyzer.php';
 
     const radius = 27;
     const circumference = 169.646;
@@ -786,8 +786,8 @@
       const name = welcomeRoot.dataset.name || 'Aditya';
       const targetRole = welcomeRoot.dataset.targetRole || 'Data Analyst';
       const readiness = welcomeRoot.dataset.readiness || 78;
-      const practiceUrl = welcomeRoot.dataset.practiceUrl || 'practice.html';
-      const retestUrl = welcomeRoot.dataset.retestUrl || 'skill-gap-analyzer.html';
+      const practiceUrl = welcomeRoot.dataset.practiceUrl || 'practice.php';
+      const retestUrl = welcomeRoot.dataset.retestUrl || 'skill-gap-analyzer.php';
       ReactDOM.createRoot(welcomeRoot).render(h(WelcomeBackBanner, { name, targetRole, readiness, practiceUrl, retestUrl }));
     }
 

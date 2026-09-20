@@ -39,12 +39,19 @@ if (!function_exists('load_skillpulse_env')) {
 }
 load_skillpulse_env();
 
+// Live Project fobtothmuulcrobgvytx Defaults (Used if .env is not deployed to cloud host)
+if (!defined('DEFAULT_SUPABASE_URL')) {
+    define('DEFAULT_SUPABASE_URL', 'https://fobtothmuulcrobgvytx.supabase.co');
+    define('DEFAULT_SUPABASE_ANON_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvYnRvdGhtdXVsY3JvYmd2eXR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk5MTQ1MzQsImV4cCI6MjEwNTQ5MDUzNH0.FSQFR2hkO_XKJLmnSo7-32hhhwWyro-TgJ52l8TI-MA');
+    define('DEFAULT_SUPABASE_SERVICE_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvYnRvdGhtdXVsY3JvYmd2eXR4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4OTkxNDUzNCwiZXhwIjoyMTA1NDkwNTM0fQ.ey7xpsbV_EtR2IuMiNbqcVvnkmVCu-6S94bq1VqoeEI');
+}
+
 /**
- * Returns true if valid Supabase credentials are configured in .env
+ * Returns true if valid Supabase credentials are configured in .env or defaults
  */
 function supabase_is_configured(): bool {
-    $url = getenv('SUPABASE_URL') ?: ($_ENV['SUPABASE_URL'] ?? '');
-    $key = getenv('SUPABASE_ANON_KEY') ?: ($_ENV['SUPABASE_ANON_KEY'] ?? '');
+    $url = getenv('SUPABASE_URL') ?: ($_ENV['SUPABASE_URL'] ?? DEFAULT_SUPABASE_URL);
+    $key = getenv('SUPABASE_ANON_KEY') ?: ($_ENV['SUPABASE_ANON_KEY'] ?? DEFAULT_SUPABASE_ANON_KEY);
     return (!empty($url) && !empty($key) && strpos($url, 'your-project-id') === false);
 }
 
@@ -68,9 +75,9 @@ function supabase_rest_request(string $endpoint, string $method = 'GET', ?array 
         ];
     }
 
-    $baseUrl = rtrim(getenv('SUPABASE_URL') ?: ($_ENV['SUPABASE_URL'] ?? ''), '/');
-    $anonKey = getenv('SUPABASE_ANON_KEY') ?: ($_ENV['SUPABASE_ANON_KEY'] ?? '');
-    $serviceKey = getenv('SUPABASE_SERVICE_ROLE_KEY') ?: ($_ENV['SUPABASE_SERVICE_ROLE_KEY'] ?? '');
+    $baseUrl = rtrim(getenv('SUPABASE_URL') ?: ($_ENV['SUPABASE_URL'] ?? DEFAULT_SUPABASE_URL), '/');
+    $anonKey = getenv('SUPABASE_ANON_KEY') ?: ($_ENV['SUPABASE_ANON_KEY'] ?? DEFAULT_SUPABASE_ANON_KEY);
+    $serviceKey = getenv('SUPABASE_SERVICE_ROLE_KEY') ?: ($_ENV['SUPABASE_SERVICE_ROLE_KEY'] ?? DEFAULT_SUPABASE_SERVICE_KEY);
 
     $apiKey = ($useServiceRole && !empty($serviceKey)) ? $serviceKey : $anonKey;
     $authBearer = $apiKey;
@@ -86,8 +93,16 @@ function supabase_rest_request(string $endpoint, string $method = 'GET', ?array 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 8); // 8s safety timeout
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    $caBundle = ini_get('curl.cainfo') ?: ini_get('openssl.cafile');
+    if (!empty($caBundle) && file_exists($caBundle)) {
+        curl_setopt($ch, CURLOPT_CAINFO, $caBundle);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    } else {
+        // Fallback for Windows environments without local root certificates configured in php.ini
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    }
 
     $headers = [
         'apikey: ' . $apiKey,
@@ -336,5 +351,102 @@ function supabase_log_security_event(string $eventType, string $user, string $st
             'status' => $status,
             'metadata' => $meta
         ], [], true);
+    }
+}
+
+/**
+ * Record a verified enrollment into Supabase public.enrollments
+ */
+function supabase_record_enrollment(array $data): array {
+    if (!supabase_is_configured()) {
+        return ['success' => true, 'source' => 'local_only'];
+    }
+
+    $payload = [
+        'enrollment_id' => $data['enrollment_id'],
+        'course_id' => $data['course_id'] ?? null,
+        'candidate_name' => $data['candidate_name'] ?? 'Candidate',
+        'candidate_email' => $data['candidate_email'] ?? '',
+        'candidate_mobile' => $data['candidate_mobile'] ?? '',
+        'qualification' => $data['qualification'] ?? 'Polytechnic Diploma (MSBTE)',
+        'district' => $data['district'] ?? 'Pune',
+        'id_type' => $data['id_type'] ?? 'mahaswayam_id',
+        'id_number_masked' => $data['id_number_masked'] ?? 'XXXX',
+        'scheme_type' => $data['scheme_type'] ?? 'mahaswayam_subsidized',
+        'status' => $data['status'] ?? 'VERIFIED_ACTIVE',
+        'subsidy_waiver' => $data['subsidy_waiver'] ?? '',
+        'verification_hash' => $data['verification_hash'] ?? ''
+    ];
+
+    $res = supabase_rest_request('enrollments', 'POST', $payload, [], true);
+    return $res;
+}
+
+/**
+ * Fetch enrollments from Supabase with optional candidate email filter
+ */
+function supabase_get_enrollments(string $email = '', int $limit = 50): array {
+    if (!supabase_is_configured()) {
+        $localFile = __DIR__ . '/../backend/enrollments.json';
+        if (file_exists($localFile)) {
+            $data = json_decode(file_get_contents($localFile), true) ?: [];
+            if (!empty($email)) {
+                $data = array_values(array_filter($data, function($e) use ($email) {
+                    return strcasecmp($e['candidate']['email'] ?? '', $email) === 0;
+                }));
+            }
+            return array_slice($data, 0, $limit);
+        }
+        return [];
+    }
+
+    $params = [
+        'select' => '*',
+        'order' => 'created_at.desc',
+        'limit' => $limit
+    ];
+    if (!empty($email)) {
+        $params['candidate_email'] = 'eq.' . $email;
+    }
+
+    $res = supabase_rest_request('enrollments', 'GET', null, $params, true);
+    if ($res['success'] && is_array($res['data'])) {
+        return $res['data'];
+    }
+
+    // Fallback to local file
+    $localFile = __DIR__ . '/../backend/enrollments.json';
+    if (file_exists($localFile)) {
+        return json_decode(file_get_contents($localFile), true) ?: [];
+    }
+    return [];
+}
+
+/**
+ * Award XP to a user profile in Supabase
+ */
+function supabase_award_xp(string $userId, int $xpAmount, string $dimension = 'courses'): void {
+    if (!supabase_is_configured()) return;
+
+    $res = supabase_rest_request('user_profiles', 'GET', null, [
+        'select' => 'id,total_xp,dimensions',
+        'user_id' => 'eq.' . $userId,
+        'limit' => 1
+    ], true);
+
+    if ($res['success'] && !empty($res['data'][0])) {
+        $profile = $res['data'][0];
+        $newXp = (int)($profile['total_xp'] ?? 1340) + $xpAmount;
+        $dims = $profile['dimensions'] ?? [];
+        if (isset($dims[$dimension])) {
+            $dims[$dimension]['xp'] = ((int)($dims[$dimension]['xp'] ?? 0)) + $xpAmount;
+            $dims[$dimension]['items'] = ((int)($dims[$dimension]['items'] ?? 0)) + 1;
+        }
+
+        supabase_rest_request('user_profiles', 'PATCH', [
+            'total_xp' => $newXp,
+            'dimensions' => $dims,
+            'updated_at' => date('c')
+        ], ['user_id' => 'eq.' . $userId], true);
     }
 }

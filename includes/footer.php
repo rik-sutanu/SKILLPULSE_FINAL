@@ -78,6 +78,26 @@
                 <span>Skill India Digital Hub ↗</span>
               </a>
             </li>
+            <li>
+              <a href="https://swayam.gov.in/" target="_blank" rel="noopener noreferrer" aria-label="SWAYAM Portal, Ministry of Education (opens in a new tab)" style="display:inline-flex;align-items:center;gap:4px;">
+                <span>SWAYAM (MoE) ↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://nptel.ac.in/" target="_blank" rel="noopener noreferrer" aria-label="NPTEL, IITs and IISc (opens in a new tab)" style="display:inline-flex;align-items:center;gap:4px;">
+                <span>NPTEL (IITs &amp; IISc) ↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.digilocker.gov.in/" target="_blank" rel="noopener noreferrer" aria-label="DigiLocker & APAAR, MeitY (opens in a new tab)" style="display:inline-flex;align-items:center;gap:4px;">
+                <span>DigiLocker &amp; APAAR ↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.apprenticeshipindia.gov.in/" target="_blank" rel="noopener noreferrer" aria-label="Apprenticeship India NAPS (opens in a new tab)" style="display:inline-flex;align-items:center;gap:4px;">
+                <span>Apprenticeship India (NAPS) ↗</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

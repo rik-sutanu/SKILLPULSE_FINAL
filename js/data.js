@@ -2581,6 +2581,708 @@ window.SKILLPULSE_DATA = {
       "url": "https://www.skillindiadigital.gov.in/",
       "description": "National digital public infrastructure for skill certifications, apprenticeships, and mobile verification.",
       "badge": "Digital India / MSDE"
+    },
+    {
+      "id": "swayam",
+      "name": "SWAYAM Portal",
+      "authority": "Ministry of Education, Govt. of India",
+      "url": "https://swayam.gov.in/",
+      "description": "National MOOC platform offering university-accredited online learning with credit transfer eligibility under UGC / AICTE.",
+      "badge": "Ministry of Education"
+    },
+    {
+      "id": "nptel",
+      "name": "NPTEL (IITs & IISc)",
+      "authority": "IIT Madras & Consortium of IITs / MoE",
+      "url": "https://nptel.ac.in/",
+      "description": "Premier open online learning initiative by 7 Indian Institutes of Technology (IITs) and IISc for engineering & TVET.",
+      "badge": "Premier Academic MoE"
+    },
+    {
+      "id": "digilocker",
+      "name": "DigiLocker & APAAR",
+      "authority": "Ministry of Electronics and IT (MeitY) & MoE",
+      "url": "https://www.digilocker.gov.in/",
+      "description": "Digital wallet for authentic educational records, National Academic Depository (NAD), and 12-digit APAAR Student ID.",
+      "badge": "Digital India (MeitY)"
+    },
+    {
+      "id": "naps",
+      "name": "Apprenticeship India (NAPS)",
+      "authority": "Ministry of Skill Development & Entrepreneurship (MSDE)",
+      "url": "https://www.apprenticeshipindia.gov.in/",
+      "description": "National Apprenticeship Promotion Scheme portal connecting TVET graduates with industry training & DBT stipends.",
+      "badge": "National Apprenticeship"
     }
+  ],
+  "CORPORATE_HIRING_RADAR": [
+      {
+          "id": "google",
+          "name": "Google India",
+          "shortName": "Google",
+          "initials": "GOOG",
+          "tier": "Tier 1 High Tech",
+          "tierCategory": "tier1",
+          "tierBadge": "Tier 1 Product",
+          "tierBadgeClass": "badge-primary",
+          "sector": "Search, Cloud & AI",
+          "headcount": 850,
+          "minReadinessScore": 85,
+          "ctcRange": "\u20b918.0 - \u20b935.0 LPA",
+          "roles": [
+              "Associate Software Engineer",
+              "Data Analytics Intern",
+              "Cloud Solutions Associate"
+          ],
+          "locations": [
+              "Bengaluru",
+              "Hyderabad",
+              "Pune"
+          ],
+          "technicalDemands": [
+              "Advanced DSA (Graphs, Trees, DP)",
+              "System Efficiency & Concurrency",
+              "Python / C++ / Java",
+              "Clean Modular Code & Git"
+          ],
+          "toolsDemands": [
+              "Google Cloud Platform (GCP)",
+              "Docker / Kubernetes",
+              "Linux Shell Scripting"
+          ],
+          "eligibility": "B.Tech / M.Tech / MCA or Accredited Polytechnic Diploma (CS/IT) with 65%+ or 7.0+ CGPA",
+          "assessmentFocus": "Online Coding Screen (2 Problems) -> 3 Technical Architecture & Coding Interviews -> Googliness / Culture",
+          "hiringStatus": "Active Recruitment (Off-Campus & Campus)"
+      },
+      {
+          "id": "microsoft",
+          "name": "Microsoft India",
+          "shortName": "Microsoft",
+          "initials": "MSFT",
+          "tier": "Tier 1 High Tech",
+          "tierCategory": "tier1",
+          "tierBadge": "Tier 1 Product",
+          "tierBadgeClass": "badge-primary",
+          "sector": "Enterprise Cloud, Software & AI",
+          "headcount": 920,
+          "minReadinessScore": 82,
+          "ctcRange": "\u20b916.0 - \u20b932.0 LPA",
+          "roles": [
+              "Support Engineer",
+              "Software Engineer - Azure Cloud",
+              "Applied Data Scientist"
+          ],
+          "locations": [
+              "Bengaluru",
+              "Hyderabad",
+              "Noida",
+              "Pune"
+          ],
+          "technicalDemands": [
+              "Clean OOP Design (C# / Java / Python)",
+              "Azure Services & RESTful APIs",
+              "Relational Database Design & SQL",
+              "Recursion, Heaps & Trees"
+          ],
+          "toolsDemands": [
+              "Azure DevOps",
+              "Visual Studio / VS Code",
+              "Git CLI"
+          ],
+          "eligibility": "Engineering Degree / Polytechnic Diploma in CS / IT / Allied Branches with 60%+",
+          "assessmentFocus": "Codility Automated Screening -> 2 Technical Problem Solving Rounds -> As Appropriate (AA) Leadership Round",
+          "hiringStatus": "Active Requisitions Open"
+      },
+      {
+          "id": "amazon",
+          "name": "Amazon India",
+          "shortName": "Amazon",
+          "initials": "AMZN",
+          "tier": "Tier 1 High Tech",
+          "tierCategory": "tier1",
+          "tierBadge": "Tier 1 Product",
+          "tierBadgeClass": "badge-primary",
+          "sector": "E-Commerce, Cloud (AWS) & Logistics",
+          "headcount": 1450,
+          "minReadinessScore": 80,
+          "ctcRange": "\u20b914.0 - \u20b928.0 LPA",
+          "roles": [
+              "Associate Data Engineer",
+              "Operations Technology Specialist",
+              "SDE-1"
+          ],
+          "locations": [
+              "Bengaluru",
+              "Chennai",
+              "Hyderabad",
+              "Mumbai",
+              "Pune"
+          ],
+          "technicalDemands": [
+              "Complex SQL (Window functions, CTEs, Self-joins)",
+              "ETL Pipelines & Data Warehousing",
+              "Python Scripting & Pandas",
+              "AWS S3 / Redshift / Glue basics"
+          ],
+          "toolsDemands": [
+              "AWS Cloud Console",
+              "Jupyter / PySpark",
+              "SQL Workbench"
+          ],
+          "eligibility": "Any recognized Engineering / Polytechnic Diploma / BCA / MCA graduate",
+          "assessmentFocus": "Amazon OA (2 Coding + Work Style Simulation) -> 3 Bar Raiser & Technical Rounds",
+          "hiringStatus": "High Volume Hiring"
+      },
+      {
+          "id": "flipkart",
+          "name": "Flipkart (Walmart Group)",
+          "shortName": "Flipkart",
+          "initials": "FLIP",
+          "tier": "Tier 1 High Tech",
+          "tierCategory": "tier1",
+          "tierBadge": "Tier 1 E-Com",
+          "tierBadgeClass": "badge-primary",
+          "sector": "E-Commerce & Supply Chain Tech",
+          "headcount": 680,
+          "minReadinessScore": 80,
+          "ctcRange": "\u20b912.0 - \u20b924.0 LPA",
+          "roles": [
+              "Junior Backend Developer",
+              "Catalog Operations Analyst",
+              "UI Frontend Engineer"
+          ],
+          "locations": [
+              "Bengaluru",
+              "Mumbai"
+          ],
+          "technicalDemands": [
+              "Java SpringBoot / Node.js",
+              "Redis & In-Memory Caching",
+              "MySQL / PostgreSQL Tuning",
+              "High-Concurrency Problem Solving"
+          ],
+          "toolsDemands": [
+              "Kafka Event Streams",
+              "Postman",
+              "Kibana / Grafana"
+          ],
+          "eligibility": "Degree or Diploma in Engineering with proven GitHub code repositories / projects",
+          "assessmentFocus": "Machine Coding Round (2 Hours live application building) -> Problem Solving -> Culture Fit",
+          "hiringStatus": "Early Career Hiring Open"
+      },
+      {
+          "id": "oracle",
+          "name": "Oracle India",
+          "shortName": "Oracle",
+          "initials": "ORCL",
+          "tier": "Tier 1 High Tech",
+          "tierCategory": "tier1",
+          "tierBadge": "Tier 1 Enterprise",
+          "tierBadgeClass": "badge-primary",
+          "sector": "Enterprise Database & Cloud ERP",
+          "headcount": 1100,
+          "minReadinessScore": 78,
+          "ctcRange": "\u20b910.0 - \u20b920.0 LPA",
+          "roles": [
+              "Associate Applications Developer",
+              "Cloud Support Engineer",
+              "Database Administrator Trainee"
+          ],
+          "locations": [
+              "Bengaluru",
+              "Hyderabad",
+              "Mumbai",
+              "Pune"
+          ],
+          "technicalDemands": [
+              "Relational Database Internals & PL/SQL",
+              "Linux / Unix Shell Scripting",
+              "Core Java / Python",
+              "Performance Tuning & Indexes"
+          ],
+          "toolsDemands": [
+              "Oracle Cloud Infrastructure (OCI)",
+              "SQL Developer",
+              "Linux Bash"
+          ],
+          "eligibility": "B.E. / B.Tech / Polytechnic Diploma (CS/IT/Electronics) with 60% aggregate",
+          "assessmentFocus": "Online Aptitude & Coding Test -> 2 Core Technical Rounds -> HR",
+          "hiringStatus": "Actively Recruiting"
+      },
+      {
+          "id": "tcs",
+          "name": "Tata Consultancy Services (TCS)",
+          "shortName": "TCS",
+          "initials": "TCS",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "Global IT Services",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Digital Transformation & IT Consulting",
+          "headcount": 16800,
+          "minReadinessScore": 70,
+          "ctcRange": "\u20b93.6 - \u20b97.5 LPA (Ninja / Digital / Prime)",
+          "roles": [
+              "Assistant System Engineer",
+              "Digital Cadre Developer",
+              "Cloud Operations Trainee"
+          ],
+          "locations": [
+              "Mumbai",
+              "Pune",
+              "Nagpur",
+              "Nashik",
+              "Bengaluru",
+              "Chennai"
+          ],
+          "technicalDemands": [
+              "Core Java / Python / C#",
+              "SQL Querying (Joins, Aggregations, Group By)",
+              "Logical Aptitude & Numerical Reasoning",
+              "SDLC & Git Fundamentals"
+          ],
+          "toolsDemands": [
+              "Eclipse / VS Code",
+              "MySQL / Oracle DB",
+              "Git / GitHub"
+          ],
+          "eligibility": "Diploma TVET / B.E. / B.Sc / BCA with minimum 60% marks and no active backlogs",
+          "assessmentFocus": "TCS NQT (Cognitive Abilities + Programming MCQ & Coding) -> Technical Interview -> Managerial & HR",
+          "hiringStatus": "National Qualifier Test (NQT) Live"
+      },
+      {
+          "id": "infosys",
+          "name": "Infosys Limited",
+          "shortName": "Infosys",
+          "initials": "INFY",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "Global IT Services",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Enterprise Applications & Cloud Services",
+          "headcount": 14200,
+          "minReadinessScore": 70,
+          "ctcRange": "\u20b93.8 - \u20b99.5 LPA (SE / Specialist Programmer)",
+          "roles": [
+              "Systems Engineer",
+              "Specialist Programmer (DSE)",
+              "Operations Executive"
+          ],
+          "locations": [
+              "Pune (Hinjawadi)",
+              "Mumbai",
+              "Bengaluru",
+              "Hyderabad",
+              "Nagpur"
+          ],
+          "technicalDemands": [
+              "Full Stack Web (JavaScript, HTML5, CSS3, React basics)",
+              "Database Normalization & SQL Queries",
+              "RESTful API Integration",
+              "Basic Data Structures"
+          ],
+          "toolsDemands": [
+              "Spring Boot / Node.js",
+              "PostgreSQL",
+              "Postman API Client"
+          ],
+          "eligibility": "Polytechnic Diploma, B.E./B.Tech, B.Sc, BCA with 60%+ throughout 10th, 12th & Graduation",
+          "assessmentFocus": "Infosys Online Test (Reasoning, Mathematical, Pseudocode, Puzzle Solving) -> Technical Round -> HR",
+          "hiringStatus": "Off-Campus & Institutional Drives"
+      },
+      {
+          "id": "wipro",
+          "name": "Wipro Technologies",
+          "shortName": "Wipro",
+          "initials": "WIPR",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "Global IT Services",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Technology Consulting & Digital Operations",
+          "headcount": 9500,
+          "minReadinessScore": 68,
+          "ctcRange": "\u20b93.5 - \u20b96.5 LPA (Elite / Turbo)",
+          "roles": [
+              "Project Engineer",
+              "Cloud Infrastructure Trainee",
+              "Test Automation Associate"
+          ],
+          "locations": [
+              "Pune",
+              "Mumbai",
+              "Bengaluru",
+              "Chennai",
+              "Kolkata"
+          ],
+          "technicalDemands": [
+              "Basic Programming (Java / Python / C++)",
+              "Networking & Cloud Essentials",
+              "Basic SQL Filters & Views",
+              "Troubleshooting & Log Verification"
+          ],
+          "toolsDemands": [
+              "Linux CLI",
+              "Jira",
+              "Selenium basics"
+          ],
+          "eligibility": "Diploma in Engineering / B.Tech / BCA with 60% aggregate and max 1 backlog allowed",
+          "assessmentFocus": "Elite National Talent Hunt (Aptitude, Written English Communication, Online Coding) -> Business Discussion",
+          "hiringStatus": "Open for Registration"
+      },
+      {
+          "id": "cognizant",
+          "name": "Cognizant (CTS)",
+          "shortName": "Cognizant",
+          "initials": "CTSH",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "Global IT Services",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Healthcare, BFS & Digital IT Services",
+          "headcount": 11000,
+          "minReadinessScore": 70,
+          "ctcRange": "\u20b94.0 - \u20b97.0 LPA (GenC / GenC Next)",
+          "roles": [
+              "Programmer Analyst Trainee",
+              "Quality Engineering Associate",
+              "Data Analytics Trainee"
+          ],
+          "locations": [
+              "Mumbai",
+              "Pune",
+              "Chennai",
+              "Hyderabad",
+              "Kolkata"
+          ],
+          "technicalDemands": [
+              "Object-Oriented Programming Fundamentals",
+              "RDBMS & SQL Query Construction",
+              "Basic Data Wrangling & Excel",
+              "Analytical Troubleshooting"
+          ],
+          "toolsDemands": [
+              "Git",
+              "SQL Server / MySQL",
+              "Eclipse IDE"
+          ],
+          "eligibility": "All academic engineering & technical diploma streams with 60%+ throughout",
+          "assessmentFocus": "Skill-based Aptitude & Coding Assessment -> Technical Interview -> HR Discussion",
+          "hiringStatus": "Active Recruitment Window"
+      },
+      {
+          "id": "persistent",
+          "name": "Persistent Systems",
+          "shortName": "Persistent",
+          "initials": "PSYS",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "Product Engineering",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Software Product Engineering & HealthTech",
+          "headcount": 2400,
+          "minReadinessScore": 72,
+          "ctcRange": "\u20b94.5 - \u20b98.5 LPA",
+          "roles": [
+              "Associate Software Developer",
+              "Cloud & DevOps Associate",
+              "Data QA Specialist"
+          ],
+          "locations": [
+              "Pune (Senapati Bapat Rd / Hinjawadi)",
+              "Nagpur",
+              "Goa",
+              "Bengaluru"
+          ],
+          "technicalDemands": [
+              "RESTful API Development (Node/Python/Java)",
+              "Docker & Linux Command Line",
+              "PostgreSQL / MySQL Schema Design",
+              "Unit Testing & Git Workflows"
+          ],
+          "toolsDemands": [
+              "Docker",
+              "Postman",
+              "GitHub Actions"
+          ],
+          "eligibility": "Diploma in Computer / IT or B.E. / B.Tech with 60%+ aggregate",
+          "assessmentFocus": "Coding Assessment (DSA & SQL) -> Hands-on Technical Interview -> Cultural Fit",
+          "hiringStatus": "Actively Hiring for Pune & Nagpur Hubs"
+      },
+      {
+          "id": "hexaware",
+          "name": "Hexaware Technologies",
+          "shortName": "Hexaware",
+          "initials": "HEXA",
+          "tier": "IT Services & Mid-Tier Tech",
+          "tierCategory": "tier2",
+          "tierBadge": "IT Modernization",
+          "tierBadgeClass": "badge-cyan",
+          "sector": "Automation, Cloud & IT Modernization",
+          "headcount": 1850,
+          "minReadinessScore": 68,
+          "ctcRange": "\u20b93.8 - \u20b96.0 LPA",
+          "roles": [
+              "Associate Automation Engineer",
+              "Infrastructure Engineer",
+              "Junior QA Analyst"
+          ],
+          "locations": [
+              "Mumbai (Mahape)",
+              "Pune",
+              "Chennai"
+          ],
+          "technicalDemands": [
+              "Test Automation (Selenium / Python)",
+              "SQL Verification Queries",
+              "CI/CD Pipeline Awareness",
+              "Agile Methodologies"
+          ],
+          "toolsDemands": [
+              "Selenium WebDriver",
+              "Jira",
+              "Jenkins"
+          ],
+          "eligibility": "Diploma / Degree in technical streams with 60%+",
+          "assessmentFocus": "Aptitude + Domain Assessment -> Technical Interview -> HR",
+          "hiringStatus": "Direct Campus & State Pool Hiring"
+      },
+      {
+          "id": "tatamotors",
+          "name": "Tata Motors Limited",
+          "shortName": "Tata Motors",
+          "initials": "TML",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "Automotive & EV",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Automotive, Electric Mobility & Manufacturing",
+          "headcount": 1250,
+          "minReadinessScore": 75,
+          "ctcRange": "\u20b93.2 - \u20b95.5 LPA",
+          "roles": [
+              "Diploma Trainee Engineer (DTE)",
+              "EV Battery Systems Associate",
+              "Assembly & Quality Supervisor"
+          ],
+          "locations": [
+              "Pune (Pimpri-Chinchwad)",
+              "Pantnagar",
+              "Sanand",
+              "Jamshedpur"
+          ],
+          "technicalDemands": [
+              "PLC Programming (Siemens / Allen-Bradley)",
+              "CAD / SolidWorks / CATIA Drafting",
+              "Quality Assurance (5S, Kaizen, Six Sigma basics)",
+              "Industrial Safety & Wiring Schematics"
+          ],
+          "toolsDemands": [
+              "AutoCAD / SolidWorks",
+              "Siemens TIA Portal",
+              "SAP PM / PP Module basics"
+          ],
+          "eligibility": "Diploma in Mechanical / Electrical / Automobile / Mechatronics from MSBTE or recognized State Technical Board",
+          "assessmentFocus": "Technical Trade Test -> Practical Workshop Evaluation -> Panel Interview",
+          "hiringStatus": "TVET Apprenticeship & DTE Cohort Open"
+      },
+      {
+          "id": "lnt",
+          "name": "Larsen & Toubro (L&T)",
+          "shortName": "L&T Core",
+          "initials": "L&T",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "Heavy Engg & Infra",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Heavy Engineering, Construction & Infrastructure",
+          "headcount": 1800,
+          "minReadinessScore": 72,
+          "ctcRange": "\u20b94.0 - \u20b96.2 LPA",
+          "roles": [
+              "Graduate Commercial Trainee",
+              "Site Junior Engineer (Civil/Mech)",
+              "Quality Inspection Trainee"
+          ],
+          "locations": [
+              "Mumbai (Powai)",
+              "Hazira",
+              "Pune",
+              "Chennai",
+              "Vadodara"
+          ],
+          "technicalDemands": [
+              "Engineering Drawings & Tolerance Standards",
+              "Estimation & Quantity Surveying (MS Excel)",
+              "Project Tracking (MS Project / Primavera basics)",
+              "Non-Destructive Testing (NDT) Awareness"
+          ],
+          "toolsDemands": [
+              "AutoCAD Civil / Mech",
+              "Advanced Excel (Costing models)",
+              "SAP ERP basics"
+          ],
+          "eligibility": "Diploma in Civil / Mechanical / Electrical with 65%+ and First Class",
+          "assessmentFocus": "Aptitude & Core Engineering Domain Test -> Technical Interview -> Medical Fitness Examination",
+          "hiringStatus": "Core Engineer Trainee Intake"
+      },
+      {
+          "id": "mahindra",
+          "name": "Mahindra & Mahindra",
+          "shortName": "Mahindra",
+          "initials": "M&M",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "Automotive & Farm",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Automotive, Farm Mechanization & Manufacturing",
+          "headcount": 980,
+          "minReadinessScore": 70,
+          "ctcRange": "\u20b93.5 - \u20b95.8 LPA",
+          "roles": [
+              "Production Associate Engineer",
+              "Quality Control Inspector",
+              "Plant Maintenance Technician"
+          ],
+          "locations": [
+              "Nashik (Satpur / Ambad)",
+              "Pune (Chakan)",
+              "Kandivali (Mumbai)",
+              "Nagpur"
+          ],
+          "technicalDemands": [
+              "CNC Milling & Turning Operations",
+              "Geometric Dimensioning & Tolerancing (GD&T)",
+              "Hydraulics & Pneumatics Systems",
+              "Preventive Maintenance Tracking"
+          ],
+          "toolsDemands": [
+              "Mastercam / CNC G-code",
+              "Vernier / Micrometer / CMM",
+              "MS Excel Maintenance Logs"
+          ],
+          "eligibility": "Diploma in Mechanical / Production / Electrical Engineering",
+          "assessmentFocus": "Written Aptitude & Technical Test -> Shopfloor Practical Round -> HR Round",
+          "hiringStatus": "Nashik & Chakan Plants Hiring"
+      },
+      {
+          "id": "hdfcbank",
+          "name": "HDFC Bank",
+          "shortName": "HDFC Bank",
+          "initials": "HDFC",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "BFSI & Retail Banking",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Banking, Financial Services & FinOps",
+          "headcount": 3400,
+          "minReadinessScore": 70,
+          "ctcRange": "\u20b93.6 - \u20b95.5 LPA",
+          "roles": [
+              "Junior Financial Operations Analyst",
+              "Branch Banking Executive",
+              "Credit Verification Associate"
+          ],
+          "locations": [
+              "Mumbai",
+              "Pune",
+              "Nagpur",
+              "Thane",
+              "Nashik",
+              "Aurangabad"
+          ],
+          "technicalDemands": [
+              "Advanced Microsoft Excel (VLOOKUP, Pivot Tables, Conditional Formatting)",
+              "Financial Account Reconciliation",
+              "Regulatory KYC / AML Compliance Guidelines",
+              "Audit Trail & Data Verification"
+          ],
+          "toolsDemands": [
+              "Finacle Banking Software basics",
+              "MS Excel (Financial Modeling)",
+              "Power BI Dashboards"
+          ],
+          "eligibility": "Graduate in Commerce / Economics / BBA / Polytechnic Commercial Diploma / B.Sc / Any Degree",
+          "assessmentFocus": "Numerical Aptitude & Business Reasoning Test -> Case Study Discussion -> Personal Interview",
+          "hiringStatus": "State-wide Branch Banking Walk-in & Drives"
+      },
+      {
+          "id": "bajajauto",
+          "name": "Bajaj Auto Limited",
+          "shortName": "Bajaj Auto",
+          "initials": "BAJAJ",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "Two-Wheeler / Auto",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Two-Wheeler & Three-Wheeler Manufacturing",
+          "headcount": 820,
+          "minReadinessScore": 74,
+          "ctcRange": "\u20b93.4 - \u20b95.6 LPA",
+          "roles": [
+              "Mechatronics Line Supervisor",
+              "Testing & R&D Shopfloor Associate",
+              "Spares Operations Coordinator"
+          ],
+          "locations": [
+              "Pune (Akurdi & Chakan)",
+              "Aurangabad (Waluj)",
+              "Pantnagar"
+          ],
+          "technicalDemands": [
+              "Pneumatic & Sensor Feedback Circuits",
+              "Robotics & Automated Guided Vehicles (AGV) Handling",
+              "Root Cause Analysis (8D Methodology)",
+              "Lean Manufacturing & Zero Defect Workflows"
+          ],
+          "toolsDemands": [
+              "PLC Software (Mitsubishi / Omron)",
+              "CAD Drafting",
+              "Inspection Jigs & Gauges"
+          ],
+          "eligibility": "Diploma in Mechanical / Mechatronics / Electrical from State Board of Technical Education",
+          "assessmentFocus": "Aptitude & Machine Reasoning -> Practical Tool Test -> HR Interview",
+          "hiringStatus": "Chakan & Waluj Production Cohort"
+      },
+      {
+          "id": "reliance",
+          "name": "Reliance Industries (Retail & Jio Ops)",
+          "shortName": "Reliance Jio",
+          "initials": "RIL",
+          "tier": "Non-Tech & Core Industry",
+          "tierCategory": "core",
+          "tierBadge": "Retail & Telecom Ops",
+          "tierBadgeClass": "badge-warning",
+          "sector": "Retail Supply Chain, Telecom & Logistics",
+          "headcount": 4600,
+          "minReadinessScore": 68,
+          "ctcRange": "\u20b93.0 - \u20b94.8 LPA",
+          "roles": [
+              "Supply Chain & Inventory Associate",
+              "Field Telecom Network Technician",
+              "Warehouse Fulfillment Coordinator"
+          ],
+          "locations": [
+              "Navi Mumbai (Ghansoli)",
+              "Pune",
+              "Nagpur",
+              "Solapur",
+              "Kolhapur"
+          ],
+          "technicalDemands": [
+              "Enterprise ERP (SAP MM / SD Navigation basics)",
+              "Warehouse Management System (WMS) Scanning",
+              "Inventory Reorder Point Calculations",
+              "Field Optical Fiber / RF Splicing & Diagnostics"
+          ],
+          "toolsDemands": [
+              "SAP GUI",
+              "OTDR Fiber Tester",
+              "Barcode Scanners / Handheld Terminals"
+          ],
+          "eligibility": "Any 3-year Diploma, BCA, B.Sc, B.Com or Technical Trade Certificate",
+          "assessmentFocus": "Online Aptitude & Logistics Reasoning Test -> Technical Assessment -> HR Verification",
+          "hiringStatus": "Maharashtra Mega Drive Active"
+      }
   ]
 };

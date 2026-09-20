@@ -11,7 +11,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-CSRF-Token');
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
@@ -333,23 +333,44 @@ if ($action === 'verify_otp') {
 
     log_access_event($userId, $role, 'USER_ACCOUNT', $userId, 'LOGIN_OTP_2FA', 'SUCCESS');
 
-    // Optional: send login notification if mobile is tied to an active user record with email
+    // Resolve user by mobile number
+    $matchedUser = null;
     $authUsersFile = __DIR__ . '/../backend/users_auth.json';
     $authUsers = file_exists($authUsersFile) ? json_decode(file_get_contents($authUsersFile), true) ?: [] : [];
     foreach ($authUsers as $uEmail => $uData) {
         $uMob = preg_replace('/[^0-9]/', '', $uData['mobile'] ?? '');
-        if (substr($uMob, -10) === $cleanMobile && !empty($uData['email']) && ($uData['status'] ?? 'ACTIVE') === 'ACTIVE') {
-            try {
-                send_login_notification_email($uData['email'], $uData['name'] ?? 'Candidate', [
-                    'ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
-                    'userAgent' => $_SERVER['HTTP_USER_AGENT'] ?? 'Web Browser',
-                    'role' => $role,
-                    'timestamp' => date('F j, Y, g:i:s A T')
-                ]);
-            } catch (\Throwable $mEx) {
-                error_log('[SkillPulse Mailer] OTP login email error: ' . $mEx->getMessage());
-            }
+        if (substr($uMob, -10) === $cleanMobile && ($uData['status'] ?? 'ACTIVE') === 'ACTIVE') {
+            $matchedUser = $uData;
             break;
+        }
+    }
+
+    if (!$matchedUser && supabase_is_configured()) {
+        $sbRes = supabase_rest_request('users', 'GET', null, [
+            'select' => '*',
+            'mobile' => 'like.%' . $cleanMobile,
+            'limit' => 1
+        ], true);
+        if ($sbRes['success'] && !empty($sbRes['data'][0])) {
+            $matchedUser = $sbRes['data'][0];
+        }
+    }
+
+    $resolvedName = !empty($matchedUser['name']) ? $matchedUser['name'] : 'Candidate';
+    $resolvedEmail = !empty($matchedUser['email']) ? $matchedUser['email'] : '';
+    $resolvedInst = !empty($matchedUser['institution']) ? $matchedUser['institution'] : 'Government Polytechnic / MSSDS TVET Candidate';
+
+    // Optional: send login notification if mobile is tied to an active user record with email
+    if (!empty($resolvedEmail)) {
+        try {
+            send_login_notification_email($resolvedEmail, $resolvedName, [
+                'ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
+                'userAgent' => $_SERVER['HTTP_USER_AGENT'] ?? 'Web Browser',
+                'role' => $role,
+                'timestamp' => date('F j, Y, g:i:s A T')
+            ]);
+        } catch (\Throwable $mEx) {
+            error_log('[SkillPulse Mailer] OTP login email error: ' . $mEx->getMessage());
         }
     }
 
@@ -360,11 +381,12 @@ if ($action === 'verify_otp') {
         'message' => 'Mobile 2FA verification successful. Session secured via TLS 1.3 & HTTP-only cookies.',
         'user' => [
             'id' => $userId,
-            'name' => 'Aditya Patil',
+            'name' => $resolvedName,
+            'email' => $resolvedEmail,
             'mobile' => '+91 ' . $cleanMobile,
             'maskedMobile' => mask_phone('+91' . $cleanMobile),
             'role' => $role,
-            'institution' => 'Government Polytechnic / MSSDS TVET Candidate',
+            'institution' => $resolvedInst,
             'readinessScore' => 78,
             'lastLogin' => date('c')
         ],

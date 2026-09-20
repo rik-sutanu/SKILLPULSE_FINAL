@@ -193,6 +193,50 @@ require_once __DIR__ . '/includes/header.php';
           </tbody>
         </table>
       </div>
+    <!-- Corporate Demand Benchmarks Across Tiers -->
+    <div class="card" style="padding:1.5rem 1.75rem;border:1px solid var(--border);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem;">
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:800;color:var(--navy-900);margin:0;">
+            📊 Industry Hiring Benchmarks: Tier 1, IT Services &amp; Core
+          </h2>
+          <p style="font-size:0.8rem;color:var(--navy-500);margin:0.2rem 0 0 0;">
+            Real-time candidate readiness cutoff thresholds and talent demand across 17 benchmark companies in Maharashtra.
+          </p>
+        </div>
+        <a href="skill-intelligence.php#corporateHiringRadarSection" class="btn btn-secondary btn-sm">
+          View Corporate Radar &rarr;
+        </a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1rem;">
+        <div style="padding:1rem;background:var(--navy-50);border-radius:var(--radius-md);border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+            <span class="badge badge-primary">Tier 1 High Tech</span>
+            <span style="font-weight:800;color:var(--primary-600);font-size:0.85rem;">80-85% Cutoff</span>
+          </div>
+          <div style="font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.25rem;">Google, Microsoft, Amazon, Flipkart, Oracle</div>
+          <p style="font-size:0.78rem;color:var(--navy-600);margin:0;">Demands: Advanced DSA (O(N) Algorithms), System Architecture, Cloud Services (GCP/AWS/Azure), Python/Java/C++.</p>
+        </div>
+
+        <div style="padding:1rem;background:var(--navy-50);border-radius:var(--radius-md);border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+            <span class="badge badge-cyan">IT Services &amp; Mid Tech</span>
+            <span style="font-weight:800;color:var(--cyan-700);font-size:0.85rem;">68-72% Cutoff</span>
+          </div>
+          <div style="font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.25rem;">TCS, Infosys, Wipro, Cognizant, Persistent, Hexaware</div>
+          <p style="font-size:0.78rem;color:var(--navy-600);margin:0;">Demands: Full Stack Web (React/Node), SQL Joins &amp; Normalization, Core Java/Python, Agile Testing &amp; Git.</p>
+        </div>
+
+        <div style="padding:1rem;background:var(--navy-50);border-radius:var(--radius-md);border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+            <span class="badge badge-warning">Non-Tech &amp; Core Industry</span>
+            <span style="font-weight:800;color:#D97706;font-size:0.85rem;">68-75% Cutoff</span>
+          </div>
+          <div style="font-size:0.875rem;font-weight:700;color:var(--navy-900);margin-bottom:0.25rem;">Tata Motors, L&amp;T, Mahindra, HDFC Bank, Bajaj Auto, Reliance</div>
+          <p style="font-size:0.78rem;color:var(--navy-600);margin:0;">Demands: PLC Automation (Siemens), AutoCAD/SolidWorks, CNC Machining, Advanced Excel &amp; Financial Reconciliation, SAP ERP.</p>
+        </div>
+      </div>
     </div>
 
   </div>

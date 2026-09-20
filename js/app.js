@@ -12,23 +12,98 @@ window.SkillPulse = {
   setupNavbar: function() {
     const menuBtn = document.getElementById('mobileMenuBtn');
     const drawer = document.getElementById('mobileNavDrawer');
+    const closeBtn = document.getElementById('mobileDrawerClose');
+
     if (menuBtn && drawer) {
-      menuBtn.addEventListener('click', () => {
-        drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block';
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = drawer.style.display === 'block';
+        drawer.style.display = isOpen ? 'none' : 'block';
+        menuBtn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
       });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          drawer.style.display = 'none';
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      }
+
       drawer.addEventListener('click', (e) => {
-        if (e.target === drawer) drawer.style.display = 'none';
+        if (e.target === drawer) {
+          drawer.style.display = 'none';
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
+    // Dropdown toggle click handling for touch devices & keyboard users
+    document.querySelectorAll('.nav-dropdown-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parent = btn.closest('.nav-item-dropdown');
+        const menu = parent ? parent.querySelector('.nav-dropdown-menu') : null;
+        const isOpen = menu && menu.classList.contains('open');
+
+        // Close other dropdowns first
+        document.querySelectorAll('.nav-dropdown-menu').forEach(m => {
+          if (m !== menu) m.classList.remove('open');
+        });
+        document.querySelectorAll('.nav-dropdown-btn').forEach(b => {
+          if (b !== btn) {
+            b.classList.remove('open');
+            b.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (menu) {
+          if (isOpen) {
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          } else {
+            menu.classList.add('open');
+            btn.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        }
+      });
+    });
+
+    // Close open dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-dropdown-menu').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.nav-dropdown-btn').forEach(b => {
+          b.classList.remove('open');
+          b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
     // Set active link according to current page
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname.split('/').pop() || 'index.php';
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
       const href = link.getAttribute('href');
-      if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      if (href === currentPath || (currentPath === '' && href === 'index.php')) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
+      }
+    });
+
+    // Set active state for dropdown items and parent dropdown button
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      const href = item.getAttribute('href');
+      if (href === currentPath || (currentPath === '' && href === 'index.php')) {
+        item.classList.add('active');
+        const parentDropdown = item.closest('.nav-item-dropdown');
+        if (parentDropdown) {
+          const dropBtn = parentDropdown.querySelector('.nav-dropdown-btn');
+          if (dropBtn) dropBtn.classList.add('active');
+        }
+      } else {
+        item.classList.remove('active');
       }
     });
   },
@@ -321,6 +396,15 @@ window.SkillPulse = {
       });
     });
 
+    // Automatically synchronize Welcome Back banner on the page with authenticated user's name
+    const welcomeBanner = document.getElementById('userWelcomeBanner') || document.querySelector('welcome-back-banner');
+    if (welcomeBanner && fullName) {
+      welcomeBanner.setAttribute('name', fullName);
+      if (typeof welcomeBanner.name !== 'undefined') {
+        welcomeBanner.name = fullName;
+      }
+    }
+
     // Try fetching live improvement numbers from api/points.php
     fetch('api/points.php')
       .then(res => res.json())
@@ -466,7 +550,7 @@ window.SkillPulse = {
     // Check if current page is private dashboard; if so, redirect to index or auth page
     const currentPath = window.location.pathname.split('/').pop();
     const protectedPages = [
-      'dashboard.php', 'dashboard.html', 
+      'dashboard.php', 'dashboard.php', 
       'employer-dashboard.php', 'institution-dashboard.php',
       'my-data.php'
     ];

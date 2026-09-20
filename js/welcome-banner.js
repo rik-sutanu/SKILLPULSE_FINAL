@@ -20,8 +20,8 @@
       this._name = 'Aditya';
       this._targetRole = 'Data Analyst';
       this._readiness = 78;
-      this._practiceUrl = 'practice.html';
-      this._retestUrl = 'skill-gap-analyzer.html';
+      this._practiceUrl = 'practice.php';
+      this._retestUrl = 'skill-gap-analyzer.php';
       this._rendered = false;
     }
 
@@ -57,7 +57,7 @@
       return this._practiceUrl;
     }
     set practiceUrl(val) {
-      this._practiceUrl = val || 'practice.html';
+      this._practiceUrl = val || 'practice.php';
       this.setAttribute('practice-url', this._practiceUrl);
       if (this._practiceBtn) this._practiceBtn.href = this._practiceUrl;
     }
@@ -66,13 +66,31 @@
       return this._retestUrl;
     }
     set retestUrl(val) {
-      this._retestUrl = val || 'skill-gap-analyzer.html';
+      this._retestUrl = val || 'skill-gap-analyzer.php';
       this.setAttribute('retest-url', this._retestUrl);
       if (this._retestBtn) this._retestBtn.href = this._retestUrl;
     }
 
     connectedCallback() {
-      this._name = this.getAttribute('name') || this._name;
+      let attrName = this.getAttribute('name');
+      let resolvedName = attrName;
+
+      // Automatically sync with authenticated user session if present
+      try {
+        const rawUser = localStorage.getItem('skillpulse_user');
+        if (rawUser) {
+          const u = JSON.parse(rawUser);
+          if (u && u.name) {
+            // If name wasn't explicitly set or was the default placeholder 'Aditya', use actual user's name
+            if (!attrName || attrName === 'Aditya') {
+              resolvedName = u.name;
+              this.setAttribute('name', resolvedName);
+            }
+          }
+        }
+      } catch (e) {}
+
+      this._name = resolvedName || this._name;
       this._targetRole = this.getAttribute('target-role') || this._targetRole;
       const r = this.getAttribute('readiness');
       if (r !== null) this._readiness = Math.min(100, Math.max(0, Number(r) || 0));
@@ -86,7 +104,7 @@
     attributeChangedCallback(name, oldVal, newVal) {
       if (oldVal === newVal || !this._rendered) return;
       if (name === 'name') {
-        this._name = newVal || 'Aditya';
+        this._name = newVal || 'User';
         this._updateName();
       } else if (name === 'target-role') {
         this._targetRole = newVal || 'Data Analyst';
@@ -95,10 +113,10 @@
         this._readiness = Math.min(100, Math.max(0, Number(newVal) || 0));
         this._updateReadiness();
       } else if (name === 'practice-url') {
-        this._practiceUrl = newVal || 'practice.html';
+        this._practiceUrl = newVal || 'practice.php';
         if (this._practiceBtn) this._practiceBtn.href = this._practiceUrl;
       } else if (name === 'retest-url') {
-        this._retestUrl = newVal || 'skill-gap-analyzer.html';
+        this._retestUrl = newVal || 'skill-gap-analyzer.php';
         if (this._retestBtn) this._retestBtn.href = this._retestUrl;
       }
     }

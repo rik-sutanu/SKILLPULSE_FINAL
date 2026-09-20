@@ -4,13 +4,14 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
 require_once __DIR__ . '/../backend/security.php';
 require_once __DIR__ . '/../backend/data.php';
+require_once __DIR__ . '/../config/supabase.php';
 
 // Apply statutory security headers
 apply_government_security_headers();
@@ -167,7 +168,7 @@ function extract_text_from_pdf($filePath) {
 // --------------------------------------------------------------------------
 // GET: Provide Metadata, Roles & Sample Resumes for Quick Testing
 // --------------------------------------------------------------------------
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET') {
     $samples = [
         [
             'id' => 'sample-data-analyst',
@@ -443,7 +444,26 @@ $actionableTips[] = [
     'desc' => 'Ensure your GitHub repository or live URL is clearly hyperlinked at the top of your resume for automated crawler verification.'
 ];
 
-// 6. Award +25 XP to Candidate Profile
+// 6. Persist to Supabase public.resume_scans & Award +25 XP
+if (supabase_is_configured()) {
+    supabase_save_resume_scan([
+        'user_id' => 'usr_student_demo',
+        'candidate_name' => $name,
+        'target_role' => $activeEvaluation['title'] ?? 'Technical Professional',
+        'overall_score' => (int)($activeEvaluation['score'] ?? 70),
+        'matched_skills' => $activeEvaluation['matchedSkills'] ?? [],
+        'missing_skills' => $activeEvaluation['missingSkills'] ?? [],
+        'recommended_courses' => $recommendedBridges ?? [],
+        'recommendations' => $actionableTips ?? []
+    ]);
+    supabase_award_xp('usr_student_demo', 25, 'diagnostics');
+    supabase_log_security_event('RESUME_ATS_DIAGNOSTIC_COMPLETED', $email ?: 'candidate@skillpulse.in', 'SUCCESS', [
+        'target_role' => $activeEvaluation['title'] ?? 'General',
+        'score' => (int)($activeEvaluation['score'] ?? 70)
+    ]);
+}
+
+// Mirror points to local JSON fallback
 $pointsFile = __DIR__ . '/../backend/user_points.json';
 $currentPoints = [];
 if (file_exists($pointsFile)) {

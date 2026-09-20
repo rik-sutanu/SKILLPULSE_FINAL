@@ -36,7 +36,7 @@ function apply_government_security_headers() {
            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " .
            "font-src 'self' https://fonts.gstatic.com data:; " .
            "img-src 'self' data: https:; " .
-           "connect-src 'self' http://localhost:8000; " .
+           "connect-src 'self' https: http://localhost:8000; " .
            "frame-ancestors 'self';";
     header("Content-Security-Policy: " . $csp);
 }
