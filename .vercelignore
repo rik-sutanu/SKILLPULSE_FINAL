@@ -1,0 +1,11 @@
+.git
+.github
+tests
+scratch
+*.zip
+composer.phar
+.env
+.env.local
+.env.*.local
+node_modules
+*.md
